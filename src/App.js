@@ -13,17 +13,18 @@ import './App.css';
 
 class App extends Component {
   render(){
+    console.log('this.props')
+    console.log(this.props)
   return (
     <Fragment>
     <NavBar/>
     <Router>
     <Switch>
-    <Route exact path="/">
-      <Search />
-    </Route>
-   <Route path="/MoviePage">
-      <MoviePage />
-  </Route>
+    <Route exact path="/" component={Search} />
+      
+    
+   <Route path="/MoviePage" component={MoviePage}/>
+    
    
   </Switch>
   </Router>

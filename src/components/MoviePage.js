@@ -27,30 +27,24 @@ class MoviePage extends Component{
     };
     
     async componentDidMount(){
-        const url='https://api.tvmaze.com/search/shows?q=test';
-        const response = await fetch(url);
-        const data= await response.json();
-        // console.log(data);
-        this.setState({movies:data, loading: false})
+       // const { filteredMovie } = this.props.location.state ;
     }
     
     render(){
-
-                if (this.state.loading){
-                    return <div> loading...</div>;
-                }
+        console.log(this.props.location.state)
+const  {filteredMovie} = this.props.location.state
+               
 
                 return(
                     <div>   
                     <List>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.name}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.id}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.language}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.status}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.summary}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.type}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.url}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={this.state.movies.show.webChannel}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.name}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.language}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.status}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.summary}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.type}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.url}  /></ListItem>
+                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.webChannel}  /></ListItem>
                     </List>
                     {/* <ListItemAvatar>
                                 <Avatar/>
@@ -60,4 +54,3 @@ class MoviePage extends Component{
         }
 }
 export default MoviePage;
-
