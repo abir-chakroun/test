@@ -7,14 +7,24 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
-class Search extends Component{
+class MoviePage extends Component{
     
     state={
         loading:true,
         movies:[],
         query:'',
-        filteredMovies:[],
-        filteredImages:[]
+        //show
+        id:'', 
+        image:'', 
+        language:'', 
+        name:'', 
+        status: '',
+        summary:'',
+        type:'',
+        url: '',
+        webChannel: '',
+        //network.country
+        name: ''
     };
 
     handleChange = (event) => {
@@ -96,5 +106,5 @@ class Search extends Component{
                     );
     }
 }
-export default Search;
+export default MoviePage;
 

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Search from './components/Search'
 import NavBar from './components/NavBar'
+import MoviePage from './components/MoviePage'
+
 import './App.css';
 
 class App extends Component {
@@ -9,6 +11,8 @@ class App extends Component {
       <div>
       <NavBar />
       <Search />
+      {/* <MoviePage /> */}
+
       </div>
   );
 }
