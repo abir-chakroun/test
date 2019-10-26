@@ -1,4 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+
+} from "react-router-dom";
 import Search from './components/Search'
 import NavBar from './components/NavBar'
 import MoviePage from './components/MoviePage'
@@ -8,12 +14,20 @@ import './App.css';
 class App extends Component {
   render(){
   return (
-      <div>
-      <NavBar />
+    <Fragment>
+    <NavBar/>
+    <Router>
+    <Switch>
+    <Route exact path="/">
       <Search />
-      {/* <MoviePage /> */}
-
-      </div>
+    </Route>
+   <Route path="/MoviePage">
+      <MoviePage />
+  </Route>
+   
+  </Switch>
+  </Router>
+     </Fragment>
   );
 }
 }

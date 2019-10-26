@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 class Search extends Component{
     
@@ -38,19 +39,24 @@ class Search extends Component{
         
         for ( let i =0 ; i< a.length ; i++)
         {
-            tab.push(a[i].show.name)
+            
             // this.setState({filteredMovies:tab})
             if(a[i].show.image!==null) {
+                tab.push({name  :a[i].show.name,image : a[i].show.image.medium})
                 tab1.push(a[i].show.image.medium)
                 // this.setState({filteredImages:tab1})
             }
             else{
+                tab.push({name  :a[i].show.name,image :"null"})
                 tab1.push("null")
             }
-            this.setState({filteredMovies:tab})
-            this.setState({filteredImages:tab1})        
+           
+                  
         }
-
+        console.log('tab' , tab)
+        console.log('tab1' , tab1)
+        this.setState({filteredMovies:tab})
+        this.setState({filteredImages:tab1})  
         
     }
     async componentDidMount(){
@@ -62,7 +68,20 @@ class Search extends Component{
     }
 
     render(){
-
+        const { filteredMovies  } = this.state;
+        const movies = filteredMovies.map(filteredMovie => {
+            return (
+              <Link to="/MoviePage">
+      
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar src={filteredMovie.image} />
+                </ListItemAvatar>
+                <ListItemText primary={filteredMovie.name} />
+              </ListItem>
+              </Link>
+            );
+          });
                 if (this.state.loading){
                     return <div> loading...</div>;
                 }
@@ -82,13 +101,7 @@ class Search extends Component{
                         <Button variant="contained" color="primary" onClick={this.handleSubmit}> submit </Button></div>
                     <div>
                     <List>
-                    <ListItem alignItems="flex-start">
-                        <ListItemAvatar>
-                        <Avatar src={this.state.filteredImages} />
-                        </ListItemAvatar>
-                        <ListItemText
-                        primary={this.state.filteredMovies}  />
-                    </ListItem>
+                       {movies}
                     </List>
               
                     </div>
@@ -97,4 +110,3 @@ class Search extends Component{
     }
 }
 export default Search;
-
