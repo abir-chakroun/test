@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
+import React, {Component ,Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+
+import Grid from '@material-ui/core/Grid';
 
 class MoviePage extends Component{
     
     state={
         loading:true,
         movies:[],
-        //show
         id:'', 
         image:'', 
         language:'', 
@@ -19,7 +19,6 @@ class MoviePage extends Component{
         type:'',
         url: '',
         webChannel: '',
-        //network.country
         name: ''
     };
     
@@ -30,12 +29,18 @@ class MoviePage extends Component{
     render(){
         console.log(this.props.location.state)
 const  {filteredMovie} = this.props.location.state
-               
+console.log(filteredMovie.show.summary) 
 
                 return(
-                    <div>   
+                        <form className={{
+                            flexGrow: 1,
+    display: 'flex',
+    flexWrap: 'wrap',
+  }} noValidate autoComplete="off">
+ 
                     <List>
-                    <ListItem alignItems="flex-start"><TextField
+                      <Grid item xs={4}> 
+                   { filteredMovie.show.name == null ? <Fragment/>:<ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="Name"
         defaultValue={filteredMovie.show.name}
@@ -44,8 +49,12 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
-                    <ListItem alignItems="flex-start"><TextField
+       
+      /></ListItem>}
+      { filteredMovie.show.image == null ? <Fragment/>:<ListItem alignItems="flex-start">
+        <img src={filteredMovie.show.image.medium}/> </ListItem>}
+
+                    { filteredMovie.show.language == null ? <Fragment/>: <ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="language"
         defaultValue={filteredMovie.show.language}
@@ -54,9 +63,10 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
+       
+      /></ListItem>}
 
-      <ListItem alignItems="flex-start"><TextField
+      { filteredMovie.show.status == null ? <Fragment/>:<ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="status"
         defaultValue={filteredMovie.show.status}
@@ -65,20 +75,24 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
-
-            <ListItem alignItems="flex-start"><TextField
+       
+      /></ListItem>}
+      </Grid>
+<Grid item xs={4}> 
+           { filteredMovie.show.summary == "" ? <Fragment/>: <ListItem alignItems="flex-start"><TextField
+        
         id="filled-read-only-input"
         label="summary"
         defaultValue={filteredMovie.show.summary}
-   
+        
         margin="normal"
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
+       
+      /></ListItem>}
 
-            <ListItem alignItems="flex-start"><TextField
+           { filteredMovie.show.type == null ? <Fragment/>: <ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="type"
         defaultValue={filteredMovie.show.type}
@@ -87,9 +101,10 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
+       
+      /></ListItem>}
 
-            <ListItem alignItems="flex-start"><TextField
+           { filteredMovie.show.url == null ? <Fragment/>: <ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="url"
         defaultValue={filteredMovie.show.url}
@@ -98,9 +113,11 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      /></ListItem>
-
-            <ListItem alignItems="flex-start"><TextField
+       
+      /></ListItem>}
+      </Grid>
+<Grid item xs={4}> 
+         { filteredMovie.show.webChannel == null ? <Fragment/>:   <ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="web Channel"
         defaultValue={filteredMovie.show.webChannel}
@@ -109,8 +126,9 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      />
-      </ListItem>
+       
+      /></ListItem>}
+      { filteredMovie.show.network.country.name == null ? <Fragment/>:
 <ListItem alignItems="flex-start"><TextField
         id="filled-read-only-input"
         label="network country name"
@@ -120,11 +138,11 @@ const  {filteredMovie} = this.props.location.state
         InputProps={{
           readOnly: true,
         }}
-      />
-      </ListItem>
-      </List>
+       
+      /></ListItem>}
+                 </Grid>   </List>
           
-                    </div>
+                    </form>
                         );
         }
 }
