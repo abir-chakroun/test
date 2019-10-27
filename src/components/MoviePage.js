@@ -3,9 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 
 class MoviePage extends Component{
     
@@ -38,17 +35,95 @@ const  {filteredMovie} = this.props.location.state
                 return(
                     <div>   
                     <List>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.name}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.language}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.status}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.summary}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.type}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.url}  /></ListItem>
-                    <ListItem alignItems="flex-start"><ListItemText primary={filteredMovie.show.webChannel}  /></ListItem>
-                    </List>
-                    {/* <ListItemAvatar>
-                                <Avatar/>
-                                </ListItemAvatar> */}
+                    <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="Name"
+        defaultValue={filteredMovie.show.name}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+                    <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="language"
+        defaultValue={filteredMovie.show.language}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+
+      <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="status"
+        defaultValue={filteredMovie.show.status}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+
+            <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="summary"
+        defaultValue={filteredMovie.show.summary}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+
+            <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="type"
+        defaultValue={filteredMovie.show.type}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+
+            <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="url"
+        defaultValue={filteredMovie.show.url}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      /></ListItem>
+
+            <ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="web Channel"
+        defaultValue={filteredMovie.show.webChannel}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      </ListItem>
+<ListItem alignItems="flex-start"><TextField
+        id="filled-read-only-input"
+        label="network country name"
+        defaultValue={filteredMovie.show.network.country.name}
+   
+        margin="normal"
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      </ListItem>
+      </List>
+          
                     </div>
                         );
         }
