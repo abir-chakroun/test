@@ -10,6 +10,7 @@ return(
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="Title" color="inherit">
+                © Abir Chakroun
                 </Typography>
             </Toolbar>
         </AppBar>

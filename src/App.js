@@ -8,6 +8,7 @@ import {
 import Search from './components/Search'
 import NavBar from './components/NavBar'
 import MoviePage from './components/MoviePage'
+import Footer from './components/Footer'
 
 import './App.css';
 
@@ -28,6 +29,17 @@ class App extends Component {
    
   </Switch>
   </Router>
+  <div style ={{backgroundColor: "#F8F8F8",
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "60px",
+    width: "100%",}}>
+    <Footer  />
+  </div>
+  
      </Fragment>
   );
 }
